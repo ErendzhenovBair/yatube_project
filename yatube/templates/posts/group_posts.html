@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>Записи сообщества {{ post.group }}</h1>
-  <p>{{% group.description %}}</p>
+  <h1>Записи сообщества {{ group.title }}</h1>
+  <p>{{ group.description }}</p>
   <article>
 {% for post in posts %}
   <ul>
@@ -14,7 +14,7 @@
   </ul>
   <p>{{ post.text|linebreaksbr}}</p>
   {% if post.group %} 
-    <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
+    <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы {{ group.title }}</a>
   {% endif %}  
     </article> 
   {% if not forloop.last %}<hr>{% endif %}
